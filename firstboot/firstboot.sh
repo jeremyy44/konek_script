@@ -53,7 +53,7 @@ echo -e "${LG}Added succesfully!${NC}\n"
 echo -e "Adding config to /etc/network/interfaces"
 cat interface-conf > /etc/network/interfaces
 echo -e "${LG}Added succesfully!${NC}\n"
-echo -e "Restarting networking.service and getting new ip. The ssh connection will disconect but the command will still work.\n
-You can now go ahead and bootstrap the server."
-nohup sh -c 'systemctl restart networking.service && dhclient enp3s0f0' &> /dev/null
+echo -e "Restarting server. The IP might change.\n
+You can now go ahead and bootstrap the server once the server is done restarting."
+sudo reboot
 
