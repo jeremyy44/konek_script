@@ -51,5 +51,8 @@ echo -e "${LG}Added succesfully!${NC}\n"
 echo -e "Adding config to /etc/network/interfaces"
 cat interface-conf > /etc/network/interfaces
 echo -e "${LG}Added succesfully!${NC}\n"
+echo -e "Restarting networking.service and getting new ip..."
+systemctl restart networking.service && dhclient enp3s0f0
+echo -e "${LG}Restarted succesfully!${NC}\n"
 
 echo -e "${LG}Now time to bootstrap!${NC}"

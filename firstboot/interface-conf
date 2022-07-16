@@ -5,34 +5,32 @@ source /etc/network/interfaces.d/*
 
 # The loopback network interface
 auto lo
-iface lo inet loopback
+        iface lo inet loopback
 
 # The primary network interface
 allow-hotplug enp3s0f0
-iface enp3s0f0 inet dhcp
+        iface enp3s0f0 inet dhcp
 
-# Interface client
+#Interface chromecast
+auto enp3s0f1
+        iface enp3s0f1 inet static
+        address 192.168.128.1
+        netmask 255.255.255.0
+
+#Interface client
 auto enp4s0f0
-iface enp4s0f0 inet static
+        iface enp4s0f0 inet static
         address 192.168.20.2
         netmask 255.255.240.0
 
-# Interface admin
+#Interface admin
 auto enp4s0f0.4
-iface enp4s0f0.4 inet static
-        address 192.168.60.2
-        netmask 255.255.252.0
+        iface enp4s0f0.4 inet static
+        address 192.168.234.2
+        netmask 255.255.255.0
 
-# Interface interne
+#Interface HeartBeat
 auto enp4s0f1
-iface enp4s0f1 inet static
+        iface enp4s0f1 inet static
         address 10.11.10.1
         netmask 255.255.255.252
-
-#Interface 4GBackup
-auto enp3s0f1
-        iface enp3s0f1 inet static
-        address 192.168.2.2
-        netmask 255.255.255.0
-        up route add -host 199.21.217.101 gw 192.168.2.1
-        down route del -host 199.21.217.101 gw 192.168.2.1
