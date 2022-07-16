@@ -1,4 +1,7 @@
 #!/bin/bash
+#--Script to run on first boot of the system--#
+#--Author: Jeremyy44--#
+#--Version: 1.0--#
 
 LG='\033[1;32m' # Light Green
 RED='\033[0;31m' # Red
@@ -70,9 +73,9 @@ function interfaces_branch01() {
 function interfaces_branch02() {
     # Modifies the config file to the branch02 config
     echo -e "Modifying the ip adresses of branch02 in /etc/network/interfaces"
-    sed -i 's/192.168.128.1/192.168.128.2/g' /etc/network/interfaces 
-    sed -i 's/192.168.20.2/192.168.20.3/g' /etc/network/interfaces 
-    sed -i 's/192.168.234.2/192.168.234.3/g' /etc/network/interfaces 
+    sed -i 's/192.168.128.1/192.168.128.2/g' /etc/network/interfaces
+    sed -i 's/192.168.20.2/192.168.20.3/g' /etc/network/interfaces
+    sed -i 's/192.168.234.2/192.168.234.3/g' /etc/network/interfaces
     sed -i 's/10.11.10.1/10.11.10.2/g' /etc/network/interfaces
     echo -e "${LG}Modified succesfully!${NC}\n"
     wait 1.2
@@ -86,7 +89,8 @@ case $1 in
     [help] | -h | --help)
         echo -e "${BLUE}Usage:${NC}   ./firstboot.sh [OPTION]"
         echo -e "${BLUE}Options:${NC} --branch01\n         --branch02\n         --help"
-        exit 0;;
+        exit 0
+        ;;
     [branch01] | --branch01)
         echo -e "${LG}Starting configuration of branch01${NC}"
         config
@@ -99,8 +103,10 @@ case $1 in
         ;;
     [Nothing] | "" | --Nothing)
         echo -e "${RED}You entered nothing${NC}. You need to specify a branch ex: ./firstboot.sh --branch01"
-        exit 1;;
+        exit 1
+        ;;
     *)
         echo -e "${RED}Invalid argument.${NC} You need to specify which branch you are configuring ex. --branch01 or --help"
-        exit 1;;
+        exit 1
+        ;;
 esac
