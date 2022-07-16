@@ -1,0 +1,7 @@
+#!/bin/bash
+
+read -p "Enter the IP address of the bootstrap server: " bootstrap_ip
+read -p "Enter server's hostname with branch0x: " hostname
+read -p "Enter the user of the server: " user
+
+knife bootstrap -N $hostname -r "role[NOC1],noc1,konek-reversessh::client,konek-branch::branch-$hostname" --ssh-user $user $bootstrap_ip --sudo -p22
