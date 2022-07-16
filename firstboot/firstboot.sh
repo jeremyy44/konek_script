@@ -16,7 +16,8 @@ echo -e "Updating..."
 if apt-get -qq update ; then
     echo -e "${LG}Updated succesfully!${NC}\n"
 else
-    echo -e "Failed to update, deleting cdrom from /etc/apt/sources.list and reruning update."
+    echo -e "${RED}Failed to update${NC}, deleting cdrom from /etc/apt/sources.list and retrying."
+    echo -e "Retrying..."
     sed -i '5d' /etc/apt/sources.list
     if apt-get -qq update ; then
         echo -e "${LG}Updated succesfully!${NC}\n"
@@ -52,8 +53,7 @@ echo -e "${LG}Added succesfully!${NC}\n"
 echo -e "Adding config to /etc/network/interfaces"
 cat interface-conf > /etc/network/interfaces
 echo -e "${LG}Added succesfully!${NC}\n"
-echo -e "Restarting networking.service and getting new ip. The ssh connection might disconect but the command will still work."
+echo -e "Restarting networking.service and getting new ip. The ssh connection will disconect but the command will still work.\n
+You can now go ahead and bootstrap the server."
 nohup sh -c 'systemctl restart networking.service && dhclient enp3s0f0' &> /dev/null
-echo -e "${LG}Restarted succesfully!${NC}\n"
 
-echo -e "${LG}Now time to bootstrap!${NC}"
