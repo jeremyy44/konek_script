@@ -1,5 +1,5 @@
 #!/bin/bash
-#--Script to run on first boot of the system--#
+#--Script to run on first boot of the server--#
 #--Author: Jeremyy44--#
 #--Version: 1.0--#
 
@@ -12,7 +12,7 @@ function config() {
     # Checks if the user is root
     if [ "$EUID" -ne 0 ]
     then echo -e "You are not root. Run 'su -' before running this script"
-        exit
+        exit 1
     fi
 
     # Updates the system
@@ -27,8 +27,8 @@ function config() {
             echo -e "${LG}Updated succesfully!${NC}\n"
         else
             clear
-            echo -e "${RED}Failed to update, please try again.${NC}"
-            exit
+            echo -e "${RED}Failed to update, please try again.\n${NC}"
+            exit 1
         fi
     fi
 
@@ -46,7 +46,7 @@ function config() {
     else
         clear
         echo -e "${RED}Failed to add user to sudoers, please try again.${NC}"
-        exit
+        exit 1
     fi
 
     # Apends config to /etc/hosts
@@ -63,7 +63,7 @@ function interfaces_branch01() {
     else
         clear
         echo -e "${RED}Failed to add config to /etc/network/interfaces. The config file must be in the same directory as the script.${NC}"
-        exit
+        exit 1
     fi
     echo -e "Restarting the server. The IP might change.\n
     You can now go ahead and bootstrap the server once the server is done restarting."
