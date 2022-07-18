@@ -102,7 +102,7 @@ case $1 in
         config
         interfaces_branch02
         ;;
-    [Nothing] | "" | --Nothing)
+    [Nothing] | "")
         echo -e "${RED}You entered nothing${NC}. You need to specify a branch ex: ./firstboot.sh --branch01"
         exit 1
         ;;
