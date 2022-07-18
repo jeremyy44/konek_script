@@ -86,7 +86,7 @@ function interfaces_branch02() {
 }
 
 function print_menu() { # selected_item, ...menu_items
-	echo -e "Which branch are you configuring?\n"
+	echo -e "${LG}Which branch are you configuring?\n${NC}"
 	local function_arguments=($@)
 
 	local selected_item="$1"
@@ -162,16 +162,19 @@ menu_result="$?"
 
 case "$menu_result" in
 	0)
+        clear
 		echo -e "${LG}Starting configuration of branch01${NC}"
         config
         interfaces_branch01
         ;;
 	1)
+        clear
         echo -e "${LG}Starting configuration of branch02${NC}"
         config
         interfaces_branch02
         ;;
-	3)
+	2)
+        clear
 		echo 'Goodbye!'
 		;;
 esac
