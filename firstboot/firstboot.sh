@@ -73,6 +73,7 @@ function interfaces_branch01() {
 function interfaces_branch02() {
     # Modifies the config file to the branch02 config
     echo -e "Modifying the ip adresses of branch02 in /etc/network/interfaces"
+    cat interface-conf > /etc/network/interfaces
     sed -i 's/192.168.128.1/192.168.128.2/g' /etc/network/interfaces
     sed -i 's/192.168.20.2/192.168.20.3/g' /etc/network/interfaces
     sed -i 's/192.168.234.2/192.168.234.3/g' /etc/network/interfaces
