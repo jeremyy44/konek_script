@@ -14,7 +14,7 @@ read -e -p "Enter the username of the user you created or press enter for deault
 username=${username:-deleteme}
 read -e -p "Enter the ip of the server you are configuring: " ip
 
-if scp -r ~/.repo/konek-linux-tools/branch-config $username@$ip:/home/$username/ ; then
+if scp -r ~/.repo/konek-linux-tools/firstboot $username@$ip:/home/$username/ ; then
     echo -e "${LG}Firstboot has been copied to the server at /home/$username${NC}"
 else
     echo -e "${RED}Failed to copy firstboot to the server.${NC}"
