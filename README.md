@@ -1,2 +1,3 @@
-# konek_script
-Script for my work environment
+# linux_tools
+
+Tools that make life easier ?

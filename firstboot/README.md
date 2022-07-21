@@ -1,0 +1,5 @@
+# FIRSTBOOT
+
+Script to run after the debian install.
+
+YOU NEED TO RUN THE CONFIGURE.SH ONLY NOT THE FIRSTBOOT.SH
